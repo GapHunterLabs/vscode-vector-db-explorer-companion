@@ -1,0 +1,81 @@
+{
+  "name": "vector-db-explorer-companion",
+  "displayName": "Vector Database Explorer Companion",
+  "description": "Browses Qdrant collections (name, vector size, point count) in a sidebar tree -- no clients exist for vector DBs unlike SQL/Mongo/Redis.",
+  "version": "0.1.0",
+  "publisher": "GapHunterLabs",
+  "icon": "images/icon.png",
+  "license": "Apache-2.0",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "Linters"
+  ],
+  "keywords": [
+    "qdrant",    "vector-database",    "rag",    "explorer"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/GapHunterLabs/vscode-vector-db-explorer-companion.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GapHunterLabs/vscode-vector-db-explorer-companion/issues"
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "vectorDbExplorerCompanion.collections",
+          "name": "Qdrant Collections"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "vectorDbExplorerCompanion.refresh",
+        "title": "Vector Database Explorer Companion: Refresh",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "vectorDbExplorerCompanion.setApiKey",
+        "title": "Vector Database Explorer Companion: Set Qdrant API Key"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "vectorDbExplorerCompanion.refresh",
+          "when": "view == vectorDbExplorerCompanion.collections",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Vector Database Explorer Companion",
+      "properties": {
+        "vectorDbExplorerCompanion.qdrantUrl": {
+          "type": "string",
+          "default": "",
+          "description": "Base URL of your Qdrant instance, e.g. http://localhost:6333"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -w -p ./",
+    "test": "tsc -p ./ && node --test \"out/test/**/*.test.js\""
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.6.2"
+  }
+}
