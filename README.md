@@ -37,10 +37,15 @@ using VS Code's own Secret Storage, never in plain settings.
   named-vectors feature (multiple vector fields per point) reports its
   dimension/distance as unavailable rather than guessing which one to
   show.
-- Not tested against a live Qdrant instance in this development
-  environment — built and unit-tested against Qdrant's documented
-  real response shapes, worth a first real connection test before
-  relying on it.
+- **Verified against a real, live Qdrant Cloud cluster** (2026-09-08):
+  the same compiled `qdrantFetch` + `parseCollectionsList`/
+  `parseCollectionDetail` code this extension ships listed real
+  collections, read a real 384-dim/Cosine collection's live point
+  count, correctly reported `null` for a real named-vectors
+  collection (the documented v0.1 limit above, not a guess), and
+  surfaced a real 404 as a `QdrantResponseError`. Not run inside the
+  VS Code extension host itself (no live UI screenshot), but the exact
+  network+parsing code path is the same either way.
 
 ## Development
 
