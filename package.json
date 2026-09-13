@@ -2,7 +2,7 @@
   "name": "vector-db-explorer-companion",
   "displayName": "Vector Database Explorer Companion",
   "description": "Browses Qdrant collections (name, vector size, point count) in a sidebar tree -- no clients exist for vector DBs unlike SQL/Mongo/Redis.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "GapHunterLabs",
   "icon": "images/icon.png",
   "license": "Apache-2.0",
