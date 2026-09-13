@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import { parseCollectionsList, parseCollectionDetail, CollectionDetail, QdrantResponseError } from './qdrantClient';
+import { recordHit } from './reviewPrompt';
 
 const SECRET_KEY = 'vectorDbExplorerCompanion.qdrantApiKey';
 
@@ -79,6 +80,12 @@ async function refresh(context: vscode.ExtensionContext, provider: QdrantExplore
       }),
     );
     provider.setNodes(nodes);
+    // A real, reachable Qdrant instance that returned at least one
+    // collection -- an empty list or a fetch failure below never
+    // reaches this line.
+    if (nodes.length > 0) {
+      recordHit(context);
+    }
   } catch (error) {
     const message = error instanceof QdrantResponseError ? error.message : String(error);
     provider.setError(`Couldn't reach Qdrant: ${message}`);
