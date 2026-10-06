@@ -1,6 +1,6 @@
 # Privacy Policy — Vector Database Explorer Companion
 
-**Effective date:** 2026-09-07
+**Effective date:** 2026-10-06
 
 Vector Database Explorer Companion is a Gap Hunter Labs extension for
 Visual Studio Code. Unlike every other extension in this workstream,
@@ -10,9 +10,16 @@ Here's exactly what that means.
 
 ## What this extension collects
 
-**Nothing.** This extension does not collect, store, transmit, or
+**Nothing.** This extension does not collect, transmit, or
 sell any data to Gap Hunter Labs or any third party — no telemetry,
 no analytics, no crash reports.
+
+## What it keeps on your machine
+
+To decide when to show its one-time rating prompt, the extension keeps two
+values in VS Code's storage for the extension on your computer: how many
+findings it has shown and whether you have answered the prompt. Neither is
+ever sent anywhere.
 
 ## Network access
 
